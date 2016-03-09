@@ -1,0 +1,25 @@
+(
+ :root-dir "/home/allentiak/devel/portfolio-manager-10pines"
+ :cache-dir "/home/allentiak/devel/portfolio-manager-10pines/.ensime_cache"
+ :scala-compiler-jars ("/home/allentiak/.sbt/boot/scala-2.10.6/lib/scala-compiler.jar" "/home/allentiak/.sbt/boot/scala-2.10.6/lib/scala-library.jar" "/home/allentiak/.sbt/boot/scala-2.10.6/lib/scala-reflect.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.10.6.jar")
+ :name "portfolio-manager-10pines"
+ :java-home "/usr/lib/jvm/java-7-openjdk-amd64"
+ :java-flags ("-Xss2m" "-Xms1024m" "-Xmx1024m" "-XX:ReservedCodeCacheSize=128m" "-XX:MaxPermSize=256m")
+ :reference-source-roots ("/usr/lib/jvm/java-7-openjdk-amd64/src.zip")
+ :scala-version "2.10.6"
+ :compiler-args ("-feature" "-deprecation" "-Xlint" "-Yinline-warnings" "-Yno-adapted-args" "-Ywarn-dead-code" "-Ywarn-numeric-widen" "-Xfuture")
+ :formatting-prefs nil
+ :disable-source-monitoring nil
+ :disable-class-monitoring nil
+ :subprojects ((
+   :name "portfolio-manager-10pines"
+   :source-roots nil
+   :targets ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.10/classes")
+   :test-targets ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.10/test-classes")
+   :depends-on-modules nil
+   :compile-deps ("/home/allentiak/.sbt/boot/scala-2.10.6/lib/scala-library.jar")
+   :runtime-deps nil
+   :test-deps nil
+   :doc-jars ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.10/portfolio-manager-10pines_2.10-0.1-SNAPSHOT-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.10.6-javadoc.jar")
+   :reference-source-roots ("/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.10.6-sources.jar")))
+)
