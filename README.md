@@ -3,6 +3,7 @@ _A collection of Scala coding exercises_
 
 ## Features
 - merge two overlapping intervals
+- a stock portfolio manager (does not work)
 
 ## Building
 
