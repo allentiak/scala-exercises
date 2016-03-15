@@ -5,12 +5,12 @@ import org.scalatest._
 class AgentTest extends FunSpec {
 
   describe("an Agent") {
-    val myAgent = Agent("myAgent")
-    it("should have at least one buying strategy") {
-      assert(myAgent.buyingStrategy !== null)
+    val myAgent = new Agent
+    it("should have by default one non-null name") {
+      assert(myAgent.name !== null)
     }
-    it("should have at least one selling strategy") {
-      assert(myAgent.sellingStrategy !== null)
+    it("should have by default one non-null strategy") {
+      assert(myAgent.strategy !== null)
     }
   }
 
