@@ -7,7 +7,8 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file(".")).
   settings(
     commonSettings: _*,
-    name := "merging-intervals",
+    name := "scala-exercises",
+    name := "portfolio-manager",
     libraryDependencies ++= Seq(
       "org.scalatest" %% "scalatest" % "2.2.6" % "test")
       )

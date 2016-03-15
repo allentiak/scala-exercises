@@ -1,6 +1,6 @@
 (
- :root-dir "/home/allentiak/devel/portfolio-manager-10pines"
- :cache-dir "/home/allentiak/devel/portfolio-manager-10pines/.ensime_cache"
+ :root-dir "/home/allentiak/devel/portfolio-manager"
+ :cache-dir "/home/allentiak/devel/portfolio-manager/.ensime_cache"
  :scala-compiler-jars ("/home/allentiak/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.11.7.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scalap/jars/scalap-2.11.7.jar")
  :name "root"
  :java-home "/usr/lib/jvm/java-8-openjdk-amd64"
@@ -13,13 +13,13 @@
  :disable-class-monitoring nil
  :subprojects ((
    :name "root"
-   :source-roots ("/home/allentiak/devel/portfolio-manager-10pines/src/main/scala" "/home/allentiak/devel/portfolio-manager-10pines/src/test/scala")
-   :targets ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.11/classes")
-   :test-targets ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.11/test-classes")
+   :source-roots ("/home/allentiak/devel/portfolio-manager/src/main/scala" "/home/allentiak/devel/portfolio-manager/src/test/scala")
+   :targets ("/home/allentiak/devel/portfolio-manager/target/scala-2.11/classes")
+   :test-targets ("/home/allentiak/devel/portfolio-manager/target/scala-2.11/test-classes")
    :depends-on-modules nil
    :compile-deps ("/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.11.7.jar")
    :runtime-deps nil
    :test-deps ("/home/allentiak/.ivy2/cache/org.scala-lang/scala-reflect/jars/scala-reflect-2.11.7.jar" "/home/allentiak/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar" "/home/allentiak/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.6.jar")
-   :doc-jars ("/home/allentiak/devel/portfolio-manager-10pines/target/scala-2.11/root_2.11-0.1-SNAPSHOT-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.11.7-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.11.7-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/docs/scala-xml_2.11-1.0.2-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scalatest/scalatest_2.11/docs/scalatest_2.11-2.2.6-javadoc.jar")
+   :doc-jars ("/home/allentiak/devel/portfolio-manager/target/scala-2.11/portfolio-manager_2.11-0.1-SNAPSHOT-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/docs/scala-library-2.11.7-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-reflect/docs/scala-reflect-2.11.7-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/docs/scala-xml_2.11-1.0.2-javadoc.jar" "/home/allentiak/.ivy2/cache/org.scalatest/scalatest_2.11/docs/scalatest_2.11-2.2.6-javadoc.jar")
    :reference-source-roots ("/home/allentiak/.ivy2/cache/org.scala-lang/scala-library/srcs/scala-library-2.11.7-sources.jar" "/home/allentiak/.ivy2/cache/org.scala-lang/scala-reflect/srcs/scala-reflect-2.11.7-sources.jar" "/home/allentiak/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/srcs/scala-xml_2.11-1.0.2-sources.jar" "/home/allentiak/.ivy2/cache/org.scalatest/scalatest_2.11/srcs/scalatest_2.11-2.2.6-sources.jar")))
 )
