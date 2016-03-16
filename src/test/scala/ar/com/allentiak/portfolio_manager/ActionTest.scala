@@ -9,9 +9,6 @@ class ActionTest extends FunSpec {
     it("should have by default a non-null name") {
       assert(myAction.name !== Nil)
     }
-    it("should have by default a non-null price") {
-      assert(myAction.price !== Nil)
-    }
 
   }
 
