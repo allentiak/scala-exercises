@@ -13,7 +13,7 @@ class AgentTest extends FunSpec {
       assert(myAgent.strategy !== Nil)
     }
     it("should have by default a non-null set of actions") {
-      assert(myAgent.actions !== Nil)
+      assert(myAgent.portfolio !== Nil)
     }
   }
 
