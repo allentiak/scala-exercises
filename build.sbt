@@ -10,7 +10,8 @@ lazy val root = (project in file(".")).
   settings(
     commonSettings: _*,
     name := "scala-exercises",
-    name := "portfolio-manager",
-    libraryDependencies ++= Seq(
-      "org.scalatest" %% "scalatest" % "2.2.6" % "test")
+      libraryDependencies ++= Seq(
+        "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+        "org.scalanlp" %% "breeze" % "0.12"
+        )
       )
