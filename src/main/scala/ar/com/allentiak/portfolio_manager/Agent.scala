@@ -1,3 +1,3 @@
 package ar.com.allentiak.portfolio_manager
 
-case class Agent(name: String = "AgentName", strategy: Strategy = ShortTermStrategy, portfolio: Portfolio = DefaultPortfolio)
+case class Agent(name: String = "AgentName", strategy: Option[Strategy], portfolio: Option[Portfolio])
