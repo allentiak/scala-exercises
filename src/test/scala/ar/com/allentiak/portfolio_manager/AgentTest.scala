@@ -9,7 +9,7 @@ class AgentTest extends FunSpec {
 
     it("by default") {
       it("should have a non-null name") {
-        assert(myAgent.name.isDefined)
+        assert(myAgent.name !== Nil)
       }
       it("should have a non-null strategy") {
         assert(myAgent.strategy !== Nil)
