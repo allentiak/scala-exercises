@@ -1,6 +1,8 @@
 package ar.com.allentiak.portfolio_manager
 
-abstract class Strategy
+abstract class Strategy{
+  def analyseMarket:Decision
+}
 
 case object ShortTermStrategy extends Strategy
 
