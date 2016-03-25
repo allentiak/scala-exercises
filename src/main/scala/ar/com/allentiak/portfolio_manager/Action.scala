@@ -4,4 +4,6 @@ import scala.collection.immutable.Stack
 
 case class Action(name: String, shortname: String, initialprice: Double, prices: Stack[Double] = Stack.empty) {
   prices.push(initialprice)
+  def lastprice: Double = { prices.head }
+  def averageprice: Double = { prices.reduceLeft(_ + _)/prices.size }
 }
