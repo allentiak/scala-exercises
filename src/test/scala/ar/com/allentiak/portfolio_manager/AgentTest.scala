@@ -2,7 +2,7 @@ package ar.com.allentiak.portfolio_manager
 
 import org.scalatest._
 
-object AgentTest extends FunSpec {
+class AgentTest extends FunSpec {
 
   describe("Given a ten days-old Market with ten actions") {
 
