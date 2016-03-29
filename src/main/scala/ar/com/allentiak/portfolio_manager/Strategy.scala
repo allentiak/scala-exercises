@@ -9,7 +9,7 @@ case object ShortTermStrategy extends Strategy {
     action.difference match {
       case Some(diff) if (diff >= 0.02) => new(Sell)
       case Some(diff) if (diff <= -0.01) => new(Buy)
-      case None => new(Ignore)
+      case _ => new(Ignore)
     }
   }
 }
@@ -19,7 +19,7 @@ case object LongTermStrategy extends Strategy {
     action.difference match {
       case Some(diff) if (action.prices.size > 5) => new(Sell)
       case Some(diff) if ((diff <= -0.01) || (action.todaysprice.get >= (action.averageprice.get * 2))) => new(Buy)
-      case None => new(Ignore)
+      case _ => new(Ignore)
     }
   }
 }
