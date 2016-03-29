@@ -3,8 +3,7 @@ package ar.com.allentiak.portfolio_manager
 import scala.collection.immutable.List
 import breeze.stats.distributions._
 
-case class Action(name: String, shortname: String, initialprice: Double) {
-  var prices = List(initialprice)
+case class Action(name: String, shortname: String, initialprice: Double, var prices: List[Double] = List.empty) {
 
   def lastprice: Option[Double] = {
     Some(prices.head)
