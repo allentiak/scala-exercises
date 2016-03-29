@@ -1,6 +1,7 @@
 package ar.com.allentiak.portfolio_manager
 
 import scala.collection.immutable.List
+import scala.util.Random
 
 case class Action(name: String, shortname: String, initialprice: Double) {
   val prices = List(initialprice)
@@ -28,6 +29,13 @@ case class Action(name: String, shortname: String, initialprice: Double) {
   def difference:Option[Double] = {
     if (todaysprice.isDefined && yesterdaysprice.isDefined) Some((todaysprice.get - yesterdaysprice.get) / yesterdaysprice.get)
     else None
+  }
+
+  def generatepriceslist(length: Int): List[Double] = {
+    var prices: List[Double] = Nil
+    for (i <- 1 to length)
+      prices.+:(Random.nextDouble)
+    prices
   }
 
 }
