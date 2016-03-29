@@ -4,7 +4,8 @@ import org.scalatest._
 
 object AgentTest extends FunSpec {
 
-  describe("Given a Market with some actions") {
+  describe("Given a ten days-old Market with ten actions") {
+
     val myAction01 = Action(name = "ActionOne", shortname = "ONE", initialprice = 22.0)
     val myAction02 = Action(name = "ActionTwo", shortname = "TWO", initialprice = 10.2)
     val myAction03 = Action(name = "ActionThree", shortname = "THREE", initialprice = 810.2)
@@ -15,6 +16,19 @@ object AgentTest extends FunSpec {
     val myAction08 = Action(name = "ActionEight", shortname = "EIGHT", initialprice = 2.2)
     val myAction09 = Action(name = "ActionNine", shortname = "NINE", initialprice = 862.2)
     val myAction10 = Action(name = "ActionTen", shortname = "TEN", initialprice = 62.2)
+
+    val days: Int = 10
+
+    myAction01.prices = Action.generatepriceslist(length = days, initialprice = myAction01.initialprice)
+    myAction02.prices = Action.generatepriceslist(length = days, initialprice = myAction02.initialprice)
+    myAction03.prices = Action.generatepriceslist(length = days, initialprice = myAction03.initialprice)
+    myAction04.prices = Action.generatepriceslist(length = days, initialprice = myAction04.initialprice)
+    myAction05.prices = Action.generatepriceslist(length = days, initialprice = myAction05.initialprice)
+    myAction06.prices = Action.generatepriceslist(length = days, initialprice = myAction06.initialprice)
+    myAction07.prices = Action.generatepriceslist(length = days, initialprice = myAction07.initialprice)
+    myAction08.prices = Action.generatepriceslist(length = days, initialprice = myAction08.initialprice)
+    myAction09.prices = Action.generatepriceslist(length = days, initialprice = myAction09.initialprice)
+    myAction10.prices = Action.generatepriceslist(length = days, initialprice = myAction10.initialprice)
 
     val myMarket = Market(
       name = "My Market",
