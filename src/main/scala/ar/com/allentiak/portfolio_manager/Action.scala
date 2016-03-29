@@ -4,7 +4,7 @@ import scala.collection.immutable.List
 import breeze.stats.distributions._
 
 case class Action(name: String, shortname: String, initialprice: Double) {
-  val prices = List(initialprice)
+  var prices = List(initialprice)
 
   def lastprice: Option[Double] = {
     Some(prices.head)
