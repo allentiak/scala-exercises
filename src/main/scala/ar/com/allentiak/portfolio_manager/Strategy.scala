@@ -7,9 +7,9 @@ abstract class Strategy {
 case object ShortTermStrategy extends Strategy {
   override def analyse(action: Action) = {
     action.difference match {
-      case Some(diff) if (diff >= 0.02) => Sell
-      case Some(diff) if (diff <= -0.01) => Buy
-      case None => Ignore
+      case Some(diff) if (diff >= 0.02) => new(Sell)
+      case Some(diff) if (diff <= -0.01) => new(Buy)
+      case None => new(Ignore)
     }
   }
 }
@@ -17,9 +17,9 @@ case object ShortTermStrategy extends Strategy {
 case object LongTermStrategy extends Strategy {
   override def analyse(action: Action) = {
     action.difference match {
-      case Some(diff) if (action.prices.size > 5) => Sell
-      case Some(diff) if ((diff <= -0.01) || (action.todaysprice.get >= (action.averageprice.get * 2))) => Buy
-      case None => Ignore
+      case Some(diff) if (action.prices.size > 5) => new(Sell)
+      case Some(diff) if ((diff <= -0.01) || (action.todaysprice.get >= (action.averageprice.get * 2))) => new(Buy)
+      case None => new(Ignore)
     }
   }
 }

@@ -1,7 +1,7 @@
 package ar.com.allentiak.portfolio_manager
 
-abstract class Decision
+sealed abstract class Decision
 
-case object Buy extends Decision
-case object Sell extends Decision
-case object Ignore extends Decision
+case class Buy() extends Decision
+case class Sell() extends Decision
+case class Ignore() extends Decision
