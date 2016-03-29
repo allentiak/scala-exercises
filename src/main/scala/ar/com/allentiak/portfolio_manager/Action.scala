@@ -31,6 +31,10 @@ case class Action(name: String, shortname: String, initialprice: Double) {
     else None
   }
 
+}
+
+case object Action {
+
   def generatepriceslist(length: Int, initialprice: Double): List[Double] = {
     var prices: List[Double] = Nil
     val poi = new LogNormal(mu = initialprice, sigma = 0.1)
