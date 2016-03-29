@@ -2,26 +2,38 @@ package ar.com.allentiak.portfolio_manager
 
 import org.scalatest._
 
-class StrategyTest extends FunSpec {
+class StrategyTest extends FunSpec with Matchers {
 
   describe("an Short-term strategy") {
 
     val myShortTermStrategy = ShortTermStrategy
 
+    val raisingPrices = List(5.0, 4.8, 4.8, 4.7, 4.5, 4.0, 3.7)
+    val droppingPrices = raisingPrices.reverse
+    val stablePrices = List(2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0)
+    val slowlyDroppingPrices = List(1000.0,999.0)
+    val slowlyRaisingPrices = slowlyDroppingPrices.reverse
+
+    val raisingAction = Action(name = "RaisingAction", shortname = "UP", prices = raisingPrices)
+    val droppingAction = Action(name = "DroppingAction", shortname = "DOWN", prices = droppingPrices)
+    val stableAction = Action(name = "StableAction", shortname = "STABLE", prices = stablePrices)
+    val slowlyRaisingAction = Action(name = "SlowlyRaisingAction", shortname = "UPSLOW", prices = slowlyRaisingPrices)
+    val slowlyDroppingAction = Action(name = "SlowlyDroppingAction", shortname = "DOWNSLOW", prices = slowlyDroppingPrices)
+
+
     it("should buy an action if the price dropped at least 1% from the day before") {
-
-      val raisingAction = Action(name = "RaisingAction", shortname = "UP", initialprice = 22.0)
-      val droppingAction = Action(name = "DroppingAction", shortname = "DOWN", initialprice = 10.2)
-
-      val raisingPrices = List(5.0, 4.8, 4.8, 4.7, 4.5, 4.0, 3.7)
-
-      raisingAction.prices = raisingPrices
-      droppingAction.prices = raisingPrices.reverse
-
-      assert(myShortTermStrategy.analyse(droppingAction).isInstanceOf[Buy] === true)
+      myShortTermStrategy.analyse(droppingAction) shouldBe a [Buy]
+      myShortTermStrategy.analyse(slowlyDroppingAction) shouldBe an [Ignore]
     }
 
-    it("should sell an action if the price rose at least 2% from the day before")(pending)
+    it("it should sell an action if the price rose at least 2% from the day before") {
+      myShortTermStrategy.analyse(raisingAction) shouldBe a [Sell]
+      myShortTermStrategy.analyse(slowlyRaisingAction) shouldBe an [Ignore]
+    }
+
+    it("should ignore an action if its price is stable") {
+      myShortTermStrategy.analyse(stableAction) shouldBe an[Ignore]
+    }
 
   }
 
