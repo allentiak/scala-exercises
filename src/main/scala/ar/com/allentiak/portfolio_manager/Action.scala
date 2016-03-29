@@ -26,7 +26,7 @@ case class Action(name: String, shortname: String, initialprice: Double) {
 
   def yesterdaysprice: Option[Double] = Some(prices.tail.head)
 
-  def difference:Option[Double] = {
+  def difference: Option[Double] = {
     if (todaysprice.isDefined && yesterdaysprice.isDefined) Some((todaysprice.get - yesterdaysprice.get) / yesterdaysprice.get)
     else None
   }
