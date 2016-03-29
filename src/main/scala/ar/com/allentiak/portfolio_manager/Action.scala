@@ -1,7 +1,7 @@
 package ar.com.allentiak.portfolio_manager
 
 import scala.collection.immutable.List
-import scala.util.Random
+import breeze.stats.distributions._
 
 case class Action(name: String, shortname: String, initialprice: Double) {
   val prices = List(initialprice)
@@ -31,10 +31,11 @@ case class Action(name: String, shortname: String, initialprice: Double) {
     else None
   }
 
-  def generatepriceslist(length: Int): List[Double] = {
+  def generatepriceslist(length: Int, initialprice: Double): List[Double] = {
     var prices: List[Double] = Nil
+    val poi = new LogNormal(mu = initialprice, sigma = 0.1)
     for (i <- 1 to length)
-      prices.+:(Random.nextDouble)
+      prices.+:(poi.get)
     prices
   }
 
