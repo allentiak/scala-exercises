@@ -11,7 +11,7 @@ class StrategyTest extends FunSpec with Matchers {
     val raisingPrices = List(5.0, 4.8, 4.8, 4.7, 4.5, 4.0, 3.7)
     val droppingPrices = raisingPrices.reverse
     val stablePrices = List(2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0)
-    val slowlyDroppingPrices = List(1000.0, 999.0)
+    val slowlyDroppingPrices = List(1000.0, 999.0, 998.0, 997.0, 996.0, 995.0, 994.0)
     val slowlyRaisingPrices = slowlyDroppingPrices.reverse
 
     val raisingAction = Action(name = "RaisingAction", shortname = "UP", prices = raisingPrices)
