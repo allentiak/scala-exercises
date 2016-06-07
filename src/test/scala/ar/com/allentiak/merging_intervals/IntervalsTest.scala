@@ -21,4 +21,15 @@ class IntervalTest extends FunSpec {
 
   }
 
+  describe("A List[Intervals] L1") {
+
+    it("should be able to be consolidated into L2 so that for each of its intervals Ii there is no Ij contained within Ii") {
+      val L1 = List(Interval(1,2),Interval(3,4),Interval(3,5),Interval(6,8))
+
+      val L2 = List(Interval(1,2), Interval(3,5),Interval(6,8))
+
+      assert(L1.consolidate === L2)
+    }
+  }
+
 }
