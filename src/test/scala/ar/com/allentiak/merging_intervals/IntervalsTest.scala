@@ -24,24 +24,47 @@ class IntervalTest extends FunSpec {
   describe("A List[Intervals] L1") {
 
     it("should be able to be consolidated into L2 so that for each of its intervals Ii there is no Ij contained within Ii") {
-      val L1 = List(Interval(6,16), Interval(1,2), Interval(16,20), Interval(3,4), Interval(10,12), Interval(8,11), Interval(3,5))
-      val L2 = List(Interval(6,16), Interval(1,2))
 
-      val L1S = L1.sortWith(_.lowerLimit < _.lowerLimit)
+      def consolidate(L:List[Interval]):List[Interval]={
+        def consolidateAux(OriginalList:List[Interval],AcumStack:List[Interval]):List[Interval]={
+          if (OriginalList.isEmpty) AcumStack.reverse
+          else {
+            if (AcumStack.isEmpty)
+            // for the first element of the list
+             consolidateAux(OriginalList.tail,OriginalList.head::AcumStack)
+            else {
+              // if intervals overlap
+              if (OriginalList.head.lowerLimit <= AcumStack.head.higherLimit)
+                // replace the head of the stack with the merged interval
+                consolidateAux(OriginalList.tail, OriginalList.head.mergeWithOverlapping(AcumStack.head)::AcumStack.tail)
+              else
+                // add the new element to the stack
+                consolidateAux(OriginalList.tail,OriginalList.head::AcumStack)
+            }
+          }
+        }
+        consolidateAux(L,List.empty[Interval])
+      }
+
+      val L1 = List(Interval(6,16), Interval(1,2), Interval(16,20), Interval(3,4), Interval(10,12), Interval(8,11), Interval(3,5))
+
+      val L2 = List(Interval(8,18), Interval(1,2))
+
 
       // sorted, consolidated solution
       // (in this case, two successive intervals do not allow  merging)
-      assert(S1.consolidate === List(Interval(1,2), Interval(3,5), Interval(6,20)))
-      assert(S2.consolidate === S2)
+      assert(consolidate(L1.sortBy(_.lowerLimit)) === List(Interval(1,2), Interval(3,5), Interval(6,20)))
+
+      assert(consolidate(L2.sortBy(_.lowerLimit)) === L2.sortBy(_.lowerLimit))
     }
 
-    it("should be able to be merged into L2 that contains for each of its intervals Ii there is no Ij contained within Ii") {
-    // sorted, merged solution
-    // (in this case, two successive intervals allow merging -we are considering integers)
-    assert(S1.merge === List(Interval(1,20)))
-
-    assert(S2.merge === S2)
-    }
+    // it("should be able to be merged into L2 that contains for each of its intervals Ii there is no Ij contained within Ii") {
+    // // sorted, merged solution
+    // // (in this case, two successive intervals allow merging -we are considering integers)
+    // assert(S1.merge === List(Interval(1,20)))
+    //
+    // assert(S2.merge === S2)
+    // }
 
   }
 

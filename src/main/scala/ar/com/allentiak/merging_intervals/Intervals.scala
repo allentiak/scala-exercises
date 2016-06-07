@@ -12,24 +12,8 @@ case class Interval(lowerLimit:Int,higherLimit:Int)
     // Totally unclean, but I would rather avoid using Options for now...
   }
 
-  def consolidate(L:List[Interval]):List[Interval]={
-    def consolidateAux(OriginalList:List[Interval],AcumStack:Stack[Interval]):List[Interval]={
-      if (OriginalList.isEmpty) AcumStack.toList
-      else {
-        if (AcumStack.isEmpty)
-        // for the first element of the list
-         consolidateAux(OriginalList.tail,AcumStack.cons(OriginalList.head))
-        else {
-          // if intervals overlap
-          if (OriginalList.head.lowerLimit <= AcumStack.top.higherLimit)
-
-          // replace the head of the stack with the merged interval
-          consolidateAux(OriginalList.tail, AcumStack.tail.cons(AcumStack.head.merge(OriginalList.head)))
-        }
-        consolidateAux(OriginalList.tail,AcumStack)
-      }
-    }
-    consolidateAux(L,EmptyStack)
+  def mergeWithOverlapping(other:Interval):Interval={
+    Interval(min(this.lowerLimit,other.lowerLimit),max(this.higherLimit,other.higherLimit))
   }
 
 }
