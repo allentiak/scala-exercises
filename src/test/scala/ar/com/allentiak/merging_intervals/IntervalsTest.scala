@@ -26,20 +26,23 @@ class IntervalTest extends FunSpec {
     it("should be able to be consolidated into L2 so that for each of its intervals Ii there is no Ij contained within Ii") {
 
       def consolidate(L:List[Interval]):List[Interval]={
-        def consolidateAux(OriginalList:List[Interval],AcumStack:List[Interval]):List[Interval]={
-          if (OriginalList.isEmpty) AcumStack.reverse
+        def consolidateAux(OriginalList:List[Interval],AccumStack:List[Interval]):List[Interval]={
+          // As we will be continously adding elements to the accummulator, a Stack should be the most efficient way to model it.
+          // However, as the Stack class has been deprecated since Scala 2.11.0, we will prepend a list.
+          // (See: http://www.scala-lang.org/api/current/#scala.collection.immutable.Stack)
+          if (OriginalList.isEmpty) AccumStack.reverse
           else {
-            if (AcumStack.isEmpty)
+            if (AccumStack.isEmpty)
             // for the first element of the list
-             consolidateAux(OriginalList.tail,OriginalList.head::AcumStack)
+             consolidateAux(OriginalList.tail,OriginalList.head::AccumStack)
             else {
               // if intervals overlap
-              if (OriginalList.head.lowerLimit <= AcumStack.head.higherLimit)
+              if (OriginalList.head.lowerLimit <= AccumStack.head.higherLimit)
                 // replace the head of the stack with the merged interval
-                consolidateAux(OriginalList.tail, OriginalList.head.mergeWithOverlapping(AcumStack.head)::AcumStack.tail)
+                consolidateAux(OriginalList.tail, OriginalList.head.mergeWithOverlapping(AccumStack.head)::AccumStack.tail)
               else
                 // add the new element to the stack
-                consolidateAux(OriginalList.tail,OriginalList.head::AcumStack)
+                consolidateAux(OriginalList.tail,OriginalList.head::AccumStack)
             }
           }
         }
