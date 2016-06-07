@@ -33,14 +33,6 @@ class IntervalTest extends FunSpec {
       // (in this case, two successive intervals do not allow  merging)
       assert(S1.consolidate === List(Interval(1,2), Interval(3,5), Interval(6,20)))
       assert(S2.consolidate === S2)
-
-      def consolidate(L:List[Interval]):List[Interval]={
-        def consolidateAux(OriginalList:List[Interval],AcumList:List[Interval]):List[Interval]={
-
-        }
-        consolidateAux(L,L)
-      }
-
     }
 
     it("should be able to be merged into L2 that contains for each of its intervals Ii there is no Ij contained within Ii") {
