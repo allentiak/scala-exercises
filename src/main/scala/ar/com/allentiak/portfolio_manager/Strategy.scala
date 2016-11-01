@@ -1,16 +1,23 @@
 package ar.com.allentiak.portfolio_manager
 
 abstract class Strategy {
-  def analyse(action: Action): Decision
+  def should_buy(action: Action): Boolean
+  def should_sell(action: Action): Boolean
 }
 
+
 case object ShortTermStrategy extends Strategy {
-  override def analyse(action: Action) = {
+  override def should_buy(action: Action) = {
     action.difference match {
-      case Some(diff) if (diff >= 0.02) => new(Sell)
-      case Some(diff) if (diff <= -0.01) => new(Buy)
-      case _ => new(Ignore)
+      case Some(diff) if (diff <= -0.01) => true
+      case _ => false
     }
+
+    override def should_sell(action: Action) = {
+      action.difference match {
+        case Some(diff) if (diff >= 0.02) => true
+        case _ => false
+      }
   }
 }
 

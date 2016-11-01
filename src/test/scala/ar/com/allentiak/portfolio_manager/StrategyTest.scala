@@ -21,17 +21,32 @@ class StrategyTest extends FunSpec with Matchers {
     val slowlyDroppingAction = Action(name = "SlowlyDroppingAction", shortname = "DOWNSLOW", prices = slowlyDroppingPrices)
 
     it("should buy an action if the price dropped at least 1% from the day before") {
-      myShortTermStrategy.analyse(droppingAction) shouldBe a[Buy]
-      myShortTermStrategy.analyse(slowlyDroppingAction) shouldBe an[Ignore]
+      myShortTermStrategy.should_buy(droppingAction) shouldBe true
+      myShortTermStrategy.should_buy(slowlyDroppingAction) shouldBe false
     }
 
     it("it should sell an action if the price rose at least 2% from the day before") {
-      myShortTermStrategy.analyse(raisingAction) shouldBe a[Sell]
-      myShortTermStrategy.analyse(slowlyRaisingAction) shouldBe an[Ignore]
+      myShortTermStrategy.should_sell(raisingAction) shouldBe true
+      myShortTermStrategy.should_sell(slowlyRaisingAction) shouldBe false
     }
 
     it("should ignore an action if its price is stable") {
-      myShortTermStrategy.analyse(stableAction) shouldBe an[Ignore]
+      myShortTermStrategy.should_sell(stableAction) shouldBe false
+    }
+
+    it("actions should be coherent") {
+
+      foreach (action <- actions)
+      assert ((myShortTermStrategy.should_buy(action) === false && myShortTermStrategy.should_sell(action)===false) || (myShortTermStrategy.should_buy(action) !== myShortTermStrategy.should_sell(action)))
+
+
+      myShortTermStrategy.should_buy(droppingAction) shouldBe true
+      myShortTermStrategy.should_sell(droppingAction) shouldBe false
+      myShortTermStrategy.should_buy(slowlyDroppingAction) shouldBe false
+      myShortTermStrategy.should_sell(raisingAction) shouldBe true
+      myShortTermStrategy.should_buy(raisingAction) shouldBe true
+      myShortTermStrategy.should_sell(slowlyRaisingAction) shouldBe false
+      myShortTermStrategy.should_sell(stableAction) shouldBe false
     }
 
   }
